@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Twitch chat on left",
+  "version": "1.0",
+  "description": "Moves Twitch chat to left side in theatre mode",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.twitch.tv/*"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.twitch.tv/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["custom-styles.css"],
+      "matches": ["https://www.twitch.tv/*"]
+    }
+  ]
+}
